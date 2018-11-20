@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@yield('title', 'Sample App') - Laravel 新手入门教程</title>
+    <title>@yield('title', 'Sample App') - Laravel</title>
     {{--Laravel 在运行时，是以 public 文件夹为根目录的，因此我们可以使用下面这行代码来为 Laravel 引入样式--}}
     <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -16,5 +16,6 @@
         @include('layouts._footer')
     </div>
 </div>
+<script src="/js/app.js"></script>
 </body>
 </html>
