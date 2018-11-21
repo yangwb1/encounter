@@ -1,4 +1,4 @@
-@extends('layouts.default')//继承layouts/default.blade.php
+@extends('layouts.default')
 @section('content')
     <div class="jumbotron">
         <h1>Hello Laravel</h1>
