@@ -18,3 +18,5 @@ Route::resource('users','UsersController');//等同下面7條路由
 Route::get('login','SessionsController@create')->name('login');//会话路由
 Route::post('login','SessionsController@create')->name('login');
 Route::delete('logout','SessionsController@create')->name('logout');
+
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
