@@ -4,7 +4,7 @@ $db_config = get_db_config();
 
 return [
 
-    'default' => $db_config['connection'],
+    'default' => $db_config['connetion'],
 
     'connections' => [
 

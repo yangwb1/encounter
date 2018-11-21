@@ -21,7 +21,7 @@ class StatusesController extends Controller
         ]);
 
         Auth::user()->statuses()->create([
-            'content' => $request['content']
+            'content' => $request->content
         ]);
         return redirect()->back();
     }

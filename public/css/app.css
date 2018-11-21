@@ -1398,7 +1398,7 @@ th {
 
 html {
   font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -3419,52 +3419,52 @@ input[type="search"] {
   }
 
   input[type="date"].input-sm,
-  .input-group-sm > input.form-control[type="date"],
-  .input-group-sm > input.input-group-addon[type="date"],
-  .input-group-sm > .input-group-btn > input.btn[type="date"],
+  .input-group-sm > input[type="date"].form-control,
+  .input-group-sm > input[type="date"].input-group-addon,
+  .input-group-sm > .input-group-btn > input[type="date"].btn,
   .input-group-sm input[type="date"],
   input[type="time"].input-sm,
-  .input-group-sm > input.form-control[type="time"],
-  .input-group-sm > input.input-group-addon[type="time"],
-  .input-group-sm > .input-group-btn > input.btn[type="time"],
+  .input-group-sm > input[type="time"].form-control,
+  .input-group-sm > input[type="time"].input-group-addon,
+  .input-group-sm > .input-group-btn > input[type="time"].btn,
   .input-group-sm
   input[type="time"],
   input[type="datetime-local"].input-sm,
-  .input-group-sm > input.form-control[type="datetime-local"],
-  .input-group-sm > input.input-group-addon[type="datetime-local"],
-  .input-group-sm > .input-group-btn > input.btn[type="datetime-local"],
+  .input-group-sm > input[type="datetime-local"].form-control,
+  .input-group-sm > input[type="datetime-local"].input-group-addon,
+  .input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
   .input-group-sm
   input[type="datetime-local"],
   input[type="month"].input-sm,
-  .input-group-sm > input.form-control[type="month"],
-  .input-group-sm > input.input-group-addon[type="month"],
-  .input-group-sm > .input-group-btn > input.btn[type="month"],
+  .input-group-sm > input[type="month"].form-control,
+  .input-group-sm > input[type="month"].input-group-addon,
+  .input-group-sm > .input-group-btn > input[type="month"].btn,
   .input-group-sm
   input[type="month"] {
     line-height: 30px;
   }
 
   input[type="date"].input-lg,
-  .input-group-lg > input.form-control[type="date"],
-  .input-group-lg > input.input-group-addon[type="date"],
-  .input-group-lg > .input-group-btn > input.btn[type="date"],
+  .input-group-lg > input[type="date"].form-control,
+  .input-group-lg > input[type="date"].input-group-addon,
+  .input-group-lg > .input-group-btn > input[type="date"].btn,
   .input-group-lg input[type="date"],
   input[type="time"].input-lg,
-  .input-group-lg > input.form-control[type="time"],
-  .input-group-lg > input.input-group-addon[type="time"],
-  .input-group-lg > .input-group-btn > input.btn[type="time"],
+  .input-group-lg > input[type="time"].form-control,
+  .input-group-lg > input[type="time"].input-group-addon,
+  .input-group-lg > .input-group-btn > input[type="time"].btn,
   .input-group-lg
   input[type="time"],
   input[type="datetime-local"].input-lg,
-  .input-group-lg > input.form-control[type="datetime-local"],
-  .input-group-lg > input.input-group-addon[type="datetime-local"],
-  .input-group-lg > .input-group-btn > input.btn[type="datetime-local"],
+  .input-group-lg > input[type="datetime-local"].form-control,
+  .input-group-lg > input[type="datetime-local"].input-group-addon,
+  .input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
   .input-group-lg
   input[type="datetime-local"],
   input[type="month"].input-lg,
-  .input-group-lg > input.form-control[type="month"],
-  .input-group-lg > input.input-group-addon[type="month"],
-  .input-group-lg > .input-group-btn > input.btn[type="month"],
+  .input-group-lg > input[type="month"].form-control,
+  .input-group-lg > input[type="month"].input-group-addon,
+  .input-group-lg > .input-group-btn > input[type="month"].btn,
   .input-group-lg
   input[type="month"] {
     line-height: 46px;
@@ -3592,9 +3592,9 @@ textarea.input-sm,
 .input-group-sm > textarea.input-group-addon,
 .input-group-sm > .input-group-btn > textarea.btn,
 select[multiple].input-sm,
-.input-group-sm > select.form-control[multiple],
-.input-group-sm > select.input-group-addon[multiple],
-.input-group-sm > .input-group-btn > select.btn[multiple] {
+.input-group-sm > select[multiple].form-control,
+.input-group-sm > select[multiple].input-group-addon,
+.input-group-sm > .input-group-btn > select[multiple].btn {
   height: auto;
 }
 
@@ -3648,9 +3648,9 @@ textarea.input-lg,
 .input-group-lg > textarea.input-group-addon,
 .input-group-lg > .input-group-btn > textarea.btn,
 select[multiple].input-lg,
-.input-group-lg > select.form-control[multiple],
-.input-group-lg > select.input-group-addon[multiple],
-.input-group-lg > .input-group-btn > select.btn[multiple] {
+.input-group-lg > select[multiple].form-control,
+.input-group-lg > select[multiple].input-group-addon,
+.input-group-lg > .input-group-btn > select[multiple].btn {
   height: auto;
 }
 
@@ -7884,7 +7884,7 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .carousel-control.left {
@@ -7973,7 +7973,7 @@ button.close {
   border-radius: 10px;
   cursor: pointer;
   background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 
 .carousel-indicators .active {
@@ -8513,6 +8513,62 @@ section.user_info h1 {
   border-radius: 50%;
 }
 
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+}
+
+.stats a {
+  float: left;
+  padding: 0 10px;
+  text-align: center;
+  width: 33%;
+  border-left: 1px solid #eeeeee;
+  color: gray;
+}
+
+.stats a:first-child {
+  padding-left: 0;
+  border: 0;
+}
+
+.stats a:hover {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.stats strong {
+  display: block;
+  font-size: 1.2em;
+  color: black;
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.user_avatars .gravatar {
+  margin: 1px 1px;
+}
+
+.user_avatars a {
+  padding: 0;
+}
+
+.users.follow {
+  padding: 0;
+}
+
+/* forms */
+
+#follow_form button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 25px;
+}
+
 /* forms */
 
 input,
@@ -8529,5 +8585,93 @@ input {
 
 .panel {
   margin-top: 50px;
+}
+
+/* Users edit */
+
+.gravatar_edit {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.gravatar_edit .gravatar {
+  float: none;
+  max-width: 100px;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.users li {
+  overflow: auto;
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.delete-btn {
+  float: right;
+  position: relative;
+  right: 0;
+}
+
+/* statuses */
+
+.statuses {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.statuses li {
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
+  position: relative;
+}
+
+.statuses .user {
+  margin-top: 5em;
+  padding-top: 0;
+}
+
+.statuses .content {
+  display: block;
+  margin-left: 60px;
+  word-break: break-word;
+}
+
+.statuses .content img {
+  display: block;
+  padding: 5px 0;
+}
+
+.statuses .timestamp {
+  color: #777777;
+  display: block;
+  margin-left: 60px;
+}
+
+.statuses .gravatar {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.statuses form button.status-delete-btn {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+
+aside textarea {
+  height: 100px;
+  margin-bottom: 5px;
+}
+
+.status_form {
+  margin-top: 20px;
 }
 

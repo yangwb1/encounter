@@ -10,45 +10,47 @@ use Mail;
 
 class UsersController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth',[
-           'except' => ['show','create','store','index', 'confirmEmail']
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store', 'index', 'confirmEmail']
         ]);
 
-        $this->middleware([
+        $this->middleware('guest', [
             'only' => ['create']
         ]);
     }
 
-    public function index(){
+    public function index()
+    {
         $users = User::paginate(10);
         return view('users.index', compact('users'));
     }
 
-    //创建用户
-    public function create(){
+    public function create()
+    {
         return view('users.create');
     }
 
-    //顯示用戶
-    //我们将用户对象 $user 通过 compact 方法转化为一个关联数组，并作为第二个参数传递给 view 方法，将数据与视图进行绑定。
-    public function show(User $user){
+    public function show(User $user)
+    {
         $statuses = $user->statuses()
-            ->orderBy('created_at', 'desc')
-            ->paginate(30);
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(30);
         return view('users.show', compact('user', 'statuses'));
     }
 
-    public function store(Request $request){
-        $this->validate($request,[
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|confirmed|min:6'
         ]);
 
         $user = User::create([
-           'name' => $request->name,
-            'email' =>$request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
@@ -57,38 +59,53 @@ class UsersController extends Controller
         return redirect('/');
     }
 
-
-
-    public function edit(User $user){
-        $this->authorize('update',$user);
-        return view('users.edit',compact('user'));
+    public function edit(User $user)
+    {
+        $this->authorize('update', $user);
+        return view('users.edit', compact('user'));
     }
 
-    public function update(User $user,Request $request){
-        $this->validate($request,[
-           'name' => 'required|max:50',
-           'password' => 'required|confirmed|min:6'
+    public function update(User $user, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'password' => 'confirmed|min:6'
         ]);
 
-        $this->authorize('update',$user);
+        $this->authorize('update', $user);
 
         $data = [];
         $data['name'] = $request->name;
-        if ($request->password){
+        if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
         $user->update($data);
 
-        session()->flash('success','个人资料更新成功~');
+        session()->flash('success', '个人资料更新成功！');
 
-        return redirect()->route('users.show',$user->id);
+        return redirect()->route('users.show', $user->id);
     }
 
-    public function destroy(User $user){
-        $this->authorize('destroy',$user);
+    public function destroy(User $user)
+    {
+        $this->authorize('destroy', $user);
         $user->delete();
-        session()->flash('success','成功删除用户！');
+        session()->flash('success', '成功删除用户！');
         return back();
+    }
+
+    protected function sendEmailConfirmationTo($user)
+    {
+        $view = 'emails.confirm';
+        $data = compact('user');
+        $from = 'aufree@yousails.com';
+        $name = 'Aufree';
+        $to = $user->email;
+        $subject = "感谢注册 Sample 应用！请确认你的邮箱。";
+
+        Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
+            $message->from($from, $name)->to($to)->subject($subject);
+        });
     }
 
     public function confirmEmail($token)
@@ -104,15 +121,17 @@ class UsersController extends Controller
         return redirect()->route('users.show', [$user]);
     }
 
-    protected function sendEmailConfirmationTo($user)
+    public function followings(User $user)
     {
-        $view = 'emails.confirm';
-        $data = compact('user');
-        $to = $user->email;
-        $subject = "感谢注册 Sample 应用！请确认你的邮箱。";
+        $users = $user->followings()->paginate(30);
+        $title = '关注的人';
+        return view('users.show_follow', compact('users', 'title'));
+    }
 
-        Mail::send($view, $data, function ($message) use ($to, $subject) {
-            $message->to($to)->subject($subject);
-        });
+    public function followers(User $user)
+    {
+        $users = $user->followers()->paginate(30);
+        $title = '粉丝';
+        return view('users.show_follow', compact('users', 'title'));
     }
 }
