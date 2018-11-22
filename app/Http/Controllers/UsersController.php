@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Auth;
 use Mail;
@@ -72,8 +73,9 @@ class UsersController extends Controller
     public function update(User $user, Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:50',
-            'password' => 'confirmed|min:6'
+            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
+            'password' => 'confirmed|min:6',
+            'introduction' => 'required|max:255'
         ]);
 
         $this->authorize('update', $user);
@@ -88,6 +90,16 @@ class UsersController extends Controller
         session()->flash('success', '个人资料更新成功！');
 
         return redirect()->route('users.show', $user->id);
+    }
+//更新用户名错误提示
+    public function messages()
+    {
+        return [
+            'name.unique' => '用户名已被占用，请重新填写',
+            'name.regex' => '用户名只支持英文、数字、横杠和下划线。',
+            'name.between' => '用户名必须介于 3 - 25 个字符之间。',
+            'name.required' => '用户名不能为空。',
+        ];
     }
 
     public function destroy(User $user)

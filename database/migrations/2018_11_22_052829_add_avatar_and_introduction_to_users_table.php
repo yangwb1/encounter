@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddActivationToUsersTable extends Migration
+class AddAvatarAndIntroductionToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddActivationToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('activation_token')->nullable();
-            $table->boolean('activated')->default(false);
+            $table->string('avatar')->nullable();
+            $table->string('introduction')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddActivationToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('activation_token');
-            $table->dropColumn('activated');
+            $table->string('avatar')->nullable();
+            $table->string('introduction')->nullable();
         });
     }
 }
