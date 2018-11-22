@@ -45,7 +45,11 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'captcha' => 'required|captcha'
+        ], [
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '请输入正确的验证码'
         ]);
 
         $user = User::create([
@@ -98,10 +102,10 @@ class UsersController extends Controller
     {
         $view = 'emails.confirm';
         $data = compact('user');
-        $from = 'aufree@yousails.com';
-        $name = 'Aufree';
+        $from = '770260332@qq.com';
+        $name = '杨文兵';
         $to = $user->email;
-        $subject = "感谢注册 Sample 应用！请确认你的邮箱。";
+        $subject = "感谢注册 encounter 应用！请确认你的邮箱。";
 
         Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
             $message->from($from, $name)->to($to)->subject($subject);

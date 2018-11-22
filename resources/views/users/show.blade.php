@@ -1,19 +1,39 @@
 @extends('layouts.default')
-@section('title', $user->name)
+@section('title', $user->name . ' 的个人中心')
 @section('content')
 <div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <div class="col-md-12">
-      <div class="col-md-offset-2 col-md-8">
+  <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
+    <div class="panel panel-default">
+      <div class="panel-body">
+          <div class="media">
         <section class="user_info">
           @include('shared._user_info', ['user' => $user])
         </section>
+              <div class="media-body">
+                  <hr>
+                  <h4><strong>个人简介</strong></h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                  <hr>
+                  <h4><strong>注册于</strong></h4>
+                  <p>January 01 1901</p>
+              </div>
         <section class="stats">
           @include('shared._stats', ['user' => $user])
         </section>
       </div>
     </div>
-    <div class="col-md-12">
+    </div>
+  </div>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <span>
+                    <h1 class="panel-title pull-left" style="font-size:30px;">{{ $user->name }} <small>{{ $user->email }}</small></h1>
+                </span>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
       @if (Auth::check())
         @include('users._follow_form')
       @endif
@@ -27,6 +47,8 @@
         {!! $statuses->render() !!}
       @endif
     </div>
-  </div>
+        </div>
+    </div>
+
 </div>
 @stop
