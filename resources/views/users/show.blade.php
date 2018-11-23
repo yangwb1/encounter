@@ -7,8 +7,14 @@
       <div class="panel-body">
           <div class="media">
         <section class="user_info">
-          @include('shared._user_info', ['user' => $user])
+          {{--@include('shared._user_info', ['user' => $user])--}}
+            <div align="center">
+                <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="300px" height="300px">
+            </div>
         </section>
+              <section class="stats">
+                  @include('shared._stats', ['user' => $user])
+              </section>
               <div class="media-body">
                   <hr>
                   <h4><strong>个人简介</strong></h4>
@@ -17,9 +23,7 @@
                   <h4><strong>注册于</strong></h4>
                   <p>{{ $user->created_at->diffForHumans() }}</p>
               </div>
-        <section class="stats">
-          @include('shared._stats', ['user' => $user])
-        </section>
+
       </div>
     </div>
     </div>

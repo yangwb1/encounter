@@ -12,15 +12,18 @@
 
         @include('shared._errors')
 
-        <div class="gravatar_edit">
-          <a href="http://gravatar.com/emails" target="_blank">
-            <img src="{{ $user->gravatar('200') }}" alt="{{ $user->name }}" class="gravatar"/>
-          </a>
-        </div>
+        {{--<div class="gravatar_edit">--}}
+          {{--<a href="http://gravatar.com/emails" target="_blank">--}}
+            {{--<img src="{{ $user->gravatar('200') }}" alt="{{ $user->name }}" class="gravatar"/>--}}
+          {{--</a>--}}
+        {{--</div>--}}
 
-        <form method="POST" action="{{ route('users.update', $user->id )}}">
+        <form method="POST" action="{{ route('users.update', $user->id )}}" accept-charset="UTF-8" enctype="multipart/form-data">
+
+
             {{ method_field('PATCH') }}
             {{ csrf_field() }}
+
 
             <div class="form-group">
               <label for="name">用户名：</label>
@@ -45,6 +48,16 @@
             <div class="form-group">
                 <label for="introduction-field">个人简介</label>
                 <textarea name="introduction" id="introduction-field" class="form-control" rows="3">{{ old('introduction', $user->introduction) }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="avatar-label">用户头像</label>
+                <input type="file" name="avatar">
+
+                @if($user->avatar)
+                    <br>
+                    <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
+                @endif
             </div>
 
             <button type="submit" class="btn btn-primary">更新</button>

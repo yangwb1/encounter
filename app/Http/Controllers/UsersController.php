@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Auth;
 use Mail;
+use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
@@ -70,26 +71,37 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(User $user, Request $request)
+    public function update(User $user,ImageUploadHandler $uploader, UserRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
-            'password' => 'confirmed|min:6',
-            'introduction' => 'required|max:255'
-        ]);
+//        $this->validate($request, [
+//            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
+//            'password' => 'confirmed|min:6',
+//            'introduction' => 'required|max:255',
+//            'avatar' => ''
+//        ]);
+        $data = $request->all();
+
+        if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', $user->id, 362);
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
+        }
 
         $this->authorize('update', $user);
 
-        $data = [];
+//        $data = [];
         $data['name'] = $request->name;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
         $user->update($data);
 
-        session()->flash('success', '个人资料更新成功！');
+        return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
 
-        return redirect()->route('users.show', $user->id);
+//        session()->flash('success', '个人资料更新成功！');
+//
+//        return redirect()->route('users.show', $user->id);
     }
 //更新用户名错误提示
     public function messages()
