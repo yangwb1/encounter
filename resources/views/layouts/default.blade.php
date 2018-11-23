@@ -3,6 +3,7 @@
   <head>
     <title>@yield('title', 'encounter') - encounter</title>
     <link rel="stylesheet" href="/css/app.css">
+    @yield('styles')
 
   </head>
   <body>
@@ -17,5 +18,6 @@
     </div>
 
     <script src="/js/app.js"></script>
+  @yield('scripts')
   </body>
 </html>

@@ -25,3 +25,5 @@ Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.
 
 Route::post('/users/followers/{user}', 'FollowersController@store')->name('followers.store');
 Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('followers.destroy');
+
+Route::post('upload_image', 'UsersController@uploadImage')->name('users.upload_image');

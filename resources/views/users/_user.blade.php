@@ -1,5 +1,6 @@
 <li>
-    <img src="{{ $user->gravatar() }}" alt="{{ $user->name }}" class="gravatar"/>
+{{--    <img src="{{ $user->gravatar() }}" alt="{{ $user->name }}" class="gravatar"/>--}}
+    <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-responsive img-circle" height="50" width="50"/>
     <a href="{{ route('users.show', $user->id )}}" class="username">{{ $user->name }}</a>
 
     @can('destroy', $user)

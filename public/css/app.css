@@ -8403,7 +8403,7 @@ p {
 /* header */
 
 .navbar-inverse {
-  background-color: #3c3e42;
+  background-color: #f0ebd5;
 }
 
 #logo {
@@ -8443,7 +8443,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #222;
+  color: #8093b1;
 }
 
 footer small {

@@ -10,6 +10,8 @@ class StatusesController extends Controller
     {
         $this->middleware('auth');
     }
+
+    //发布微博
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -20,6 +22,7 @@ class StatusesController extends Controller
         ]);
         return redirect()->back();
     }
+
     public function destroy(Status $status)
     {
         $this->authorize('destroy', $status);
