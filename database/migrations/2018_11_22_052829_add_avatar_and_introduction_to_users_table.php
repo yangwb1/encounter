@@ -27,8 +27,8 @@ class AddAvatarAndIntroductionToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->nullable();
-            $table->string('introduction')->nullable();
+            $table->dropColumn('avatar');
+            $table->dropColumn('introduction');
         });
     }
 }
