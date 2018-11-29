@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>@yield('title', 'encounter') - encounter</title>
+    <meta name="description" content="@yield('description', 'encounter')" />
     <link rel="stylesheet" href="/css/app.css">
     @yield('styles')
 
