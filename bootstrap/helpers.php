@@ -22,3 +22,8 @@ function get_db_config()
         ];
     }
 }
+
+function route_class()
+{
+    return str_replace('.', '-', Route::currentRouteName());
+}

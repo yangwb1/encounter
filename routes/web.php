@@ -28,3 +28,5 @@ Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('f
 
 Route::post('upload_image', 'UsersController@uploadImage')->name('users.upload_image');
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
