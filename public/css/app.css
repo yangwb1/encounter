@@ -8449,6 +8449,12 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
 }
 
 footer a {
@@ -8481,6 +8487,30 @@ footer img.brand-icon {
 footer .slogon {
   font-size: 13px;
   font-weight: bold;
+}
+
+footer html {
+  position: relative;
+  min-height: 100%;
+}
+
+footer body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+footer .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+footer .container p {
+  margin: 19px 0;
+  color: #c1c1c1;
+}
+
+footer .container p a {
+  color: inherit;
 }
 
 /* sidebar */

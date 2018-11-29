@@ -2,18 +2,35 @@
   <div class="container">
     <div class="col-md-offset-1 col-md-10">
       <a href="/" id="logo">encounter</a>
+        <!-- Left Side Of Navbar -->
+        <ul class="nav navbar-nav navbar-left">
+            <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">话题</a></li>
+            <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 1))) }}"><a href="{{ route('categories.show', 1) }}">分享</a></li>
+            <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 2))) }}"><a href="{{ route('categories.show', 2) }}">教程</a></li>
+            <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 3))) }}"><a href="{{ route('categories.show', 3) }}">问答</a></li>
+            <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">公告</a></li>
+        </ul>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">话题</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 1))) }}"><a href="{{ route('categories.show', 1) }}">分享</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 2))) }}"><a href="{{ route('categories.show', 2) }}">教程</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 3))) }}"><a href="{{ route('categories.show', 3) }}">问答</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">公告</a></li>
-            </ul>
-          @if (Auth::check())
-            <li><a href="{{ route('users.index') }}">用户列表</a></li>
+
+
+
+
+          {{--@if (Auth::check())--}}
+
+
+            @guest
+                <li><a href="{{ route('help') }}">帮助</a></li>
+                <li><a href="{{ route('login') }}">登录</a></li>
+
+            @else
+                    <li>
+                        <a href="{{ route('topics.create') }}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                <li><a href="{{ route('users.index') }}">用户列表</a></li>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
@@ -42,10 +59,7 @@
                 </li>
               </ul>
             </li>
-          @else
-            <li><a href="{{ route('help') }}">帮助</a></li>
-            <li><a href="{{ route('login') }}">登录</a></li>
-          @endif
+            @endguest
         </ul>
       </nav>
     </div>
