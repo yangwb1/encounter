@@ -38,3 +38,6 @@ Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+
+//回复通知
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);

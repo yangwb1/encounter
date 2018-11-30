@@ -22,6 +22,7 @@
             @guest
                 <li><a href="{{ route('help') }}">帮助</a></li>
                 <li><a href="{{ route('login') }}">登录</a></li>
+                {{--<li><a href="{{ route('store') }}">注册</a></li>--}}
 
             @else
                     <li>
@@ -29,6 +30,14 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </a>
                     </li>
+                {{-- 消息通知标记 --}}
+                <li>
+                    <a href="{{ route('notifications.index') }}" class="notifications-badge" style="margin-top: -2px;">
+                            <span class="badge badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'fade' }} " title="消息提醒">
+                                {{ Auth::user()->notification_count }}
+                            </span>
+                    </a>
+                </li>
                 <li><a href="{{ route('users.index') }}">用户列表</a></li>
 
             <li class="dropdown">
