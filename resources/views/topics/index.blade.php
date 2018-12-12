@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg-9 col-md-9 topic-list">
+        <div class="col-lg-9 col-md-9 col-lg-offset-3 col-md-offset-3 topic-list">
             @if (isset($category))
                 <div class="alert alert-info" role="alert">
                     {{ $category->name }} ：{{ $category->description }}
@@ -29,10 +29,41 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-3 col-md-3 sidebar">
+        <div class="col-lg-2 col-md-2 sidebar" id="topic_sidebar" style=";float: right;position: fixed;" >
             @include('topics._sidebar')
         </div>
+
+
     </div>
 
 @endsection
+
+@section('scripts')
+    <script type="text/javascript"  src="{{ asset('js/jquery.js') }}"></script>
+<script>
+    var jwindow = $(window);
+    jwindow.scroll(function () {
+       var scrollHeight = jwindow.scrollTop();
+       var screenHeight = jwindow.height();
+       var sideHeight = $('#topic_sidebar').height();
+       if (scrollHeight+screenHeight>sideHeight){
+           $('topic_sidebar').css({
+              'position':'fixed',
+              'top':-(sideHeight-screenHeight),
+              'right':0
+           });
+       } else{
+           $('#topic_sidebar').css({
+               'position':'static'
+           });
+       }
+    });
+        window.onload = function () {
+            jwindow.trigger('scroll');
+        };
+        jwindow.resize(function () {
+            jwindow.trigger('scroll');
+        });
+
+</script>
+    @stop
