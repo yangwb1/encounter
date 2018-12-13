@@ -9,6 +9,8 @@
     <meta name="description" content="@yield('description', 'encounter')" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/offcanvas.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/component.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/default.css') }}">
     @yield('styles')
 
   </head>
@@ -18,11 +20,21 @@
 
     <div class="container">
       @include('layouts._header')
+
       <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 navbar-left">
         @include('shared._messages')
+          </div>
+          <div class="col-md-6 col-sm-6">
+        @include('layouts._sidebar')
+          </div>
+        </div>
 
           <div class="row-offcanvas row-offcanvas-left">
+
         @yield('content')
+
         <a href="#0" class="cd-top">Top</a>
         @include('layouts._footer')
           </div>
@@ -33,6 +45,12 @@
 
   <script type="text/javascript"  src="{{ asset('js/app.js') }}"></script>
   <script type="text/javascript"  src="{{ asset('js/offcanvas.js') }}"></script>
+  <script type="text/javascript"  src="{{ asset('js/modernizr.custom.js') }}"></script>
+  <script type="text/javascript"  src="{{ asset('js/classie.js') }}"></script>
+  <script type="text/javascript"  src="{{ asset('js/uisearch.js') }}"></script>
+  <script>
+      new UISearch( document.getElementById( 'sb-search' ) );
+  </script>
   {{--回到顶部--}}
   <script>
       jQuery(document).ready(function($){

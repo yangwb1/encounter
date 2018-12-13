@@ -14,7 +14,8 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand" href="/" id="logo">encounter</a>
+
+
 
                     <button type="button" class="navbar-toggle offcanvas-toggle pull-right" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" style="float:left;">
 
@@ -26,17 +27,27 @@
 
                 </div>
 
-                <div>
 
+                <div>
+                    <a class="navbar-brand" href="/" id="logo">encounter</a>
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('home') }}">微博</a></li>
 
                         <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">测评</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                分享 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
                         <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 1))) }}"><a href="{{ route('categories.show', 1) }}">分享</a></li>
                         <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 2))) }}"><a href="{{ route('categories.show', 2) }}">教程</a></li>
                         <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 3))) }}"><a href="{{ route('categories.show', 3) }}">问答</a></li>
                         <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">公告</a></li>
+                        </ul>
+                        </li>
                     </ul>
+
+
 
                     <ul class="nav navbar-nav navbar-right">
                         {{--@if (Auth::check())--}}
@@ -92,11 +103,22 @@
                         @endguest
                     </ul>
 
+                    {{--<div class="column navbar-right">--}}
+                        {{--<div id="sb-search" class="sb-search">--}}
+                            {{--<form>--}}
+                                {{--<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">--}}
+                                {{--<input class="sb-search-submit" type="submit" value="">--}}
+                                {{--<span class="sb-icon-search"></span>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
                 </div>
 
             </div>
 
         </nav>
+
 
 
 
