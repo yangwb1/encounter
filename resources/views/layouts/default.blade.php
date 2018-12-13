@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>@yield('title', 'encounter') - encounter</title>
     <meta name="description" content="@yield('description', 'encounter')" />
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/offcanvas.css') }}">
     @yield('styles')
 
   </head>
   <body>
   <div id="app" class="{{ route_class() }}-page">
-    @include('layouts._header')
+
 
     <div class="container">
-      <div class="col-md-offset-1 col-md-10">
+      @include('layouts._header')
+      <div class="col-md-12">
         @include('shared._messages')
+
+          <div class="row-offcanvas row-offcanvas-left">
         @yield('content')
         <a href="#0" class="cd-top">Top</a>
         @include('layouts._footer')
+          </div>
       </div>
     </div>
   </div>
 
-    <script src="/js/app.js"></script>
+
+  <script type="text/javascript"  src="{{ asset('js/app.js') }}"></script>
+  <script type="text/javascript"  src="{{ asset('js/offcanvas.js') }}"></script>
+  {{--回到顶部--}}
   <script>
       jQuery(document).ready(function($){
           // browser window scroll (in pixels) after which the "back to top" link is shown
