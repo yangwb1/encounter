@@ -42,3 +42,6 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 
 //回复通知
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
+//用户收货地址
+Route::get('user_addresses', 'UserAddressesController@index')->name('users.user_addresses.index');

@@ -22,6 +22,10 @@
                   <hr>
                   <h4><strong>注册于</strong></h4>
                   <p>{{ $user->created_at->diffForHumans() }}</p>
+                  <hr>
+                  <h4><strong>我的地址</strong></h4>
+                      <a href="{{ route('users.user_addresses.index') }}">我的地址</a>
+
               </div>
 
       </div>

@@ -132,4 +132,9 @@ class User extends Authenticatable
         $this->save();
         $this->unreadNotifications->markAsRead();
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
 }

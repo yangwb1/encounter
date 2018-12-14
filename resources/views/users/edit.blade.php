@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h5><i class="glyphicon glyphicon-edit"></i> 编辑个人资料</h5>

@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="row">
-        <div class="visible-md-block visible-lg-block col-md-2 col-lg-2 sidebar" id="topic_sidebar" style="float: right;position: fixed;" >
+        <div class="visible-md-block visible-lg-block col-md-2 col-lg-1 sidebar" id="topic_sidebar" style="float: right;position: fixed;" >
             @include('topics._sidebar')
         </div>
 
