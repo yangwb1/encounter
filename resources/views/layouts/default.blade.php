@@ -83,5 +83,6 @@
       });
   </script>
   @yield('scripts')
+  @yield('scriptsAfterJs')
   </body>
 </html>

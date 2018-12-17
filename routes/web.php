@@ -47,3 +47,6 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 Route::get('user_addresses', 'UserAddressesController@index')->name('users.user_addresses.index');
 Route::get('user_addresses/create', 'UserAddressesController@create')->name('users.user_addresses.create');
 Route::post('user_addresses', 'UserAddressesController@store')->name('users.user_addresses.store');
+Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('users.user_addresses.edit');
+Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('users.user_addresses.update');
+Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('users.user_addresses.destroy');
