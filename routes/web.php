@@ -45,3 +45,5 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 
 //用户收货地址
 Route::get('user_addresses', 'UserAddressesController@index')->name('users.user_addresses.index');
+Route::get('user_addresses/create', 'UserAddressesController@create')->name('users.user_addresses.create');
+Route::post('user_addresses', 'UserAddressesController@store')->name('users.user_addresses.store');

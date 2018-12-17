@@ -33,7 +33,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('home') }}">微博</a></li>
 
-                        <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">测评</a></li>
+                        <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">文章</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 分享 <b class="caret"></b>
