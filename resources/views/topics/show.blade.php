@@ -42,18 +42,11 @@
                     <div class="topic-body">
                         {!! $topic->body !!}
 
-                        <br>
+                        <br />
 
 
-                            <div class="col-md-1 col-md-offset-8">
-                        <div class="buttons">
-                            @if($favored)
-                                <button class="btn btn-danger btn-disfavor">取消收藏</button>
-                            @else
-                                <button class="btn btn-success btn-favor">❤ 收藏</button>
-                            @endif
-                        </div>
-                            </div>
+
+
                     </div>
 
                     @can('update', $topic)
