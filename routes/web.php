@@ -53,3 +53,4 @@ Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy'
 
 //商品
 Route::get('/products', 'ProductsController@index')->name('products.index');
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
