@@ -45,6 +45,7 @@
                         <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">公告</a></li>
                         </ul>
                         </li>
+                        <li><a href="{{ route('products.index') }}">商品</a></li>
                     </ul>
 
 
