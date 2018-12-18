@@ -41,6 +41,19 @@
 
                     <div class="topic-body">
                         {!! $topic->body !!}
+
+                        <br>
+
+
+                            <div class="col-md-1 col-md-offset-8">
+                        <div class="buttons">
+                            @if($favored)
+                                <button class="btn btn-danger btn-disfavor">取消收藏</button>
+                            @else
+                                <button class="btn btn-success btn-favor">❤ 收藏</button>
+                            @endif
+                        </div>
+                            </div>
                     </div>
 
                     @can('update', $topic)
@@ -73,3 +86,39 @@
         </div>
     </div>
 @stop
+
+@section('scriptsAfterJs')
+    <script>
+        $(document).ready(function () {
+
+            $('.btn-favor').click(function () {
+                axios.post('{{ route('topics.favor', ['topic' => $topic->id]) }}')
+                    .then(function () {
+                        swal('操作成功', '', 'success')
+                            .then(function () {  // 这里加了一个 then() 方法
+                                location.reload();
+                            });
+                    }, function(error) {
+                        if (error.response && error.response.status === 401) {
+                            swal('请先登录', '', 'error');
+                        }  else if (error.response && error.response.data.msg) {
+                            swal(error.response.data.msg, '', 'error');
+                        }  else {
+                            swal('系统错误', '', 'error');
+                        }
+                    });
+            });
+
+            $('.btn-disfavor').click(function () {
+                axios.delete('{{ route('topics.disfavor', ['topic' => $topic->id]) }}')
+                    .then(function () {
+                        swal('操作成功', '', 'success')
+                            .then(function () {
+                                location.reload();
+                            });
+                    });
+            });
+
+        })
+    </script>
+@endsection

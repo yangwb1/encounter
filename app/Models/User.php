@@ -138,10 +138,19 @@ class User extends Authenticatable
         return $this->hasMany(UserAddress::class);
     }
 
+    //收藏商品
     public function favoriteProducts()
     {
         return $this->belongsToMany(Product::class, 'user_favorite_products')
             ->withTimestamps()
             ->orderBy('user_favorite_products.created_at', 'desc');
+    }
+
+    //收藏话题
+    public function favoriteTopics()
+    {
+        return $this->belongsToMany(Topic::class, 'user_favorite_topics')
+            ->withTimestamps()
+            ->orderBy('user_favorite_topics.created_at', 'desc');
     }
 }

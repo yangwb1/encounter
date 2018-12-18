@@ -32,7 +32,17 @@ class TopicsController extends Controller
             return redirect($topic->link(), 301);
         }
 
-        return view('topics.show', compact('topic'));
+        $favored = false;
+        // 用户未登录时返回的是 null，已登录时返回的是对应的用户对象
+        if($user = $request->user()) {
+            // 从当前用户已收藏的商品中搜索 id 为当前商品 id 的商品
+            // boolval() 函数用于把值转为布尔值
+            $favored = boolval($user->favoriteTopics()->find($topic->id));
+        }
+
+        return view('topics.show', ['topic' => $topic, 'favored' => $favored]);
+
+//        return view('topics.show', compact('topic'));
     }
 
     public function create(Topic $topic)
@@ -93,5 +103,26 @@ class TopicsController extends Controller
             }
         }
         return $data;
+    }
+
+    //收藏话题
+    public function favor(Topic $topic, Request $request)
+    {
+        $user = $request->user();
+        if ($user->favoriteTopics()->find($topic->id)) {
+            return [];
+        }
+
+        $user->favoriteTopics()->attach($topic);
+
+        return [];
+    }
+
+    public function disfavor(Topic $topic, Request $request)
+    {
+        $user = $request->user();
+        $user->favoriteTopics()->detach($topic);
+
+        return [];
     }
 }

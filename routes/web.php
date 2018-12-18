@@ -59,3 +59,7 @@ Route::get('products/{product}', 'ProductsController@show')->name('products.show
 Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
 //取消收藏商品
 Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
+//收藏话题
+Route::post('topics/{topic}/favorite', 'TopicsController@favor')->name('topics.favor');
+//取消收藏话题
+Route::delete('topics/{topic}/favorite', 'TopicsController@disfavor')->name('topics.disfavor');
