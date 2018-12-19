@@ -53,7 +53,7 @@ Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy'
 
 //商品
 Route::get('/products', 'ProductsController@index')->name('products.index');
-Route::get('products/{product}', 'ProductsController@show')->name('products.show');
+//Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
 //收藏商品
 Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
@@ -63,3 +63,8 @@ Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->nam
 Route::post('topics/{topic}/favorite', 'TopicsController@favor')->name('topics.favor');
 //取消收藏话题
 Route::delete('topics/{topic}/favorite', 'TopicsController@disfavor')->name('topics.disfavor');
+
+Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+Route::get('topics/favorites', 'TopicsController@favorites')->name('topics.favorites');
+
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');

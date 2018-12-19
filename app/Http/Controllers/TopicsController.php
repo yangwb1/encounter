@@ -125,4 +125,12 @@ class TopicsController extends Controller
 
         return [];
     }
+
+    //文章收藏列表
+    public function favorites(Request $request)
+    {
+        $topics = $request->user()->favoriteTopics()->paginate(16);
+
+        return view('topics.favorites', ['topics' => $topics]);
+    }
 }

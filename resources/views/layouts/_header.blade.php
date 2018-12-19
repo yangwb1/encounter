@@ -31,6 +31,7 @@
                 <div>
                     <a class="navbar-brand" href="/" id="logo">encounter</a>
                     <ul class="nav navbar-nav">
+
                         <li><a href="{{ route('home') }}">微博</a></li>
 
                         <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">文章</a></li>
@@ -85,6 +86,9 @@
                                     <li>
                                         <a href="{{ route('users.show', Auth::user()->id) }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                             个人中心</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('products.favorites') }}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>我的收藏</a>
                                     </li>
                                     <li><a href="{{ route('users.edit', Auth::user()->id) }}">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑资料</a></li>
