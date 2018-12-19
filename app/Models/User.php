@@ -153,4 +153,10 @@ class User extends Authenticatable
             ->withTimestamps()
             ->orderBy('user_favorite_topics.created_at', 'desc');
     }
+
+    //购物车
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
 }

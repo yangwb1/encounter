@@ -66,5 +66,7 @@ Route::delete('topics/{topic}/favorite', 'TopicsController@disfavor')->name('top
 
 Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
 Route::get('topics/favorites', 'TopicsController@favorites')->name('topics.favorites');
+Route::post('cart', 'CartController@add')->name('cart.add');
+
 
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');

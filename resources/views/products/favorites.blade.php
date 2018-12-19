@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        
+
         {{--<div>--}}
             {{--@include('topics.favorites')--}}
         {{--</div>--}}
