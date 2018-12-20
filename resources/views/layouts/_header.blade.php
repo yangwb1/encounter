@@ -73,6 +73,9 @@
                                 </a>
                             </li>
                             <li><a href="{{ route('users.index') }}">用户列表</a></li>
+                            <li>
+                                <a href="{{ route('cart.index') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                            </li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

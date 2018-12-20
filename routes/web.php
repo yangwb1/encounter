@@ -5,6 +5,16 @@ Route::get('/home', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
+
+//Route::group(['middleware' => 'auth'], function() {
+//
+//    Route::group(['middleware' => 'activated'], function() {
+//
+//        Route::get('cart', 'CartController@index')->name('cart.index');
+//    });
+//});
+
+
 Route::get('signup', 'UsersController@create')->name('signup');
 Route::resource('users', 'UsersController');
 
@@ -67,6 +77,7 @@ Route::delete('topics/{topic}/favorite', 'TopicsController@disfavor')->name('top
 Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
 Route::get('topics/favorites', 'TopicsController@favorites')->name('topics.favorites');
 Route::post('cart', 'CartController@add')->name('cart.add');
-
+Route::get('cart', 'CartController@index')->name('cart.index');
+Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
 
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
