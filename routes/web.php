@@ -4,7 +4,8 @@ Route::get('/', 'TopicsController@index')->name('root');
 Route::get('/home', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
-
+//商品
+Route::get('/products', 'ProductsController@index')->name('products.index');
 
 //Route::group(['middleware' => 'auth'], function() {
 //
@@ -61,8 +62,7 @@ Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->nam
 Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('users.user_addresses.update');
 Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('users.user_addresses.destroy');
 
-//商品
-Route::get('/products', 'ProductsController@index')->name('products.index');
+
 //Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
 //收藏商品
@@ -82,5 +82,6 @@ Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
 
 //订单
 Route::post('orders', 'OrdersController@store')->name('orders.store');
+Route::get('orders', 'OrdersController@index')->name('orders.index');
 
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');

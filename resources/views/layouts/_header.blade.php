@@ -93,6 +93,9 @@
                                     <li>
                                         <a href="{{ route('products.favorites') }}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>我的收藏</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('orders.index') }}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>我的订单</a>
+                                    </li>
                                     <li><a href="{{ route('users.edit', Auth::user()->id) }}">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑资料</a></li>
                                     <li class="divider"></li>
