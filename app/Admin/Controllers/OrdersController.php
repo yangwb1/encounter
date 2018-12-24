@@ -9,6 +9,9 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Encore\Admin\Facades\Admin;
+use Encore\Admin\Controllers\ModelForm;
+
 
 class OrdersController extends Controller
 {
@@ -35,12 +38,13 @@ class OrdersController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function show($id, Content $content)
+    public function show(Order $order)
     {
-        return $content
-            ->header('Detail')
-            ->description('description')
-            ->body($this->detail($id));
+        return Admin::content(function (Content $content) use ($order) {
+            $content->header('查看订单');
+            // body 方法可以接受 Laravel 的视图作为参数
+            $content->body(view('admin.orders.show', ['order' => $order]));
+        });
     }
 
     /**
