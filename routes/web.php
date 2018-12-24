@@ -100,5 +100,8 @@ Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('pay
 
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 
+//订单
+Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
+
 
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
